@@ -1,11 +1,11 @@
-package controller;
+package org.example.jpabook.week09_jpa_project.controller;
 
-import dto.MovieRequest;
-import dto.MovieResponse;
+import org.example.jpabook.week09_jpa_project.dto.MovieRequest;
+import org.example.jpabook.week09_jpa_project.dto.MovieResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.MovieService;
+import org.example.jpabook.week09_jpa_project.service.MovieService;
 
 import java.net.URI;
 import java.util.List;

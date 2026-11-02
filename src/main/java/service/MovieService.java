@@ -1,10 +1,9 @@
+package org.example.jpabook.week09_jpa_project.service;
 
-package service;
-
-import dto.MovieRequest;
-import dto.MovieResponse;
-import entity.Movie;
-import repository.MovieRepository;
+import org.example.jpabook.week09_jpa_project.dto.MovieRequest;
+import org.example.jpabook.week09_jpa_project.dto.MovieResponse;
+import org.example.jpabook.week09_jpa_project.entity.Movie;
+import org.example.jpabook.week09_jpa_project.repository.MovieRepository;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

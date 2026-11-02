@@ -1,7 +1,6 @@
+package org.example.jpabook.week09_jpa_project.repository;
 
-package repository;
-
-import entity.Movie;
+import org.example.jpabook.week09_jpa_project.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MovieRepository extends JpaRepository<Movie, Long> {
