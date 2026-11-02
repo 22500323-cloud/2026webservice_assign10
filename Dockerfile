@@ -7,4 +7,4 @@ COPY . .
 RUN chmod +x ./gradlew
 RUN ./gradlew clean build -x test
 
-CMD ["java", "-jar", "build/libs/week09-jpa-project-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "build/libs/week09_jpa_project-0.0.1-SNAPSHOT.jar"]
