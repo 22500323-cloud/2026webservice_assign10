@@ -8,9 +8,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.EntityListeners;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import java.time.LocalDateTime;
 
 @Entity
 //Movie 객체의 정보를 데이터베이스에 저장하고 관리할 수 있게 한다
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "movies")
 //Movie 클래스의 데이터가 movies테이블과 연결되도록
 public class Movie {
@@ -51,6 +57,13 @@ public class Movie {
     //영화 상영시간
     //반드시 값이 있어야함
     private Integer runningTime;
+
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
 
     protected Movie() {}
     //내부적으로 객체를 생성할 수 있도록 protected
@@ -110,4 +123,12 @@ public class Movie {
         return runningTime;
     }
     //상영시간 가져오기
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }

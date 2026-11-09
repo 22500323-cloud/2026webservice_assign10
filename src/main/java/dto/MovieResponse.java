@@ -1,7 +1,7 @@
-
 package org.example.jpabook.week09_jpa_project.dto;
 
 import org.example.jpabook.week09_jpa_project.entity.Movie;
+import java.time.LocalDateTime;
 
 public record MovieResponse(
         Long id,
@@ -10,7 +10,9 @@ public record MovieResponse(
         String genre,
         Integer releaseYear,
         Double rating,
-        Integer runningTime
+        Integer runningTime,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 ) {
     public static MovieResponse from(Movie movie) {
         return new MovieResponse(
@@ -20,7 +22,9 @@ public record MovieResponse(
                 movie.getGenre(),
                 movie.getReleaseYear(),
                 movie.getRating(),
-                movie.getRunningTime()
+                movie.getRunningTime(),
+                movie.getCreatedAt(),
+                movie.getUpdatedAt()
         );
     }
 }
