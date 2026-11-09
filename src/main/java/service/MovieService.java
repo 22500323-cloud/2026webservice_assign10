@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -55,15 +57,23 @@ public class MovieService {
     }
 
 
-    public MovieResponse update(Long id, MovieRequest request) {
-        //영화 정보를 수정
-        Movie movie = findEntity(id);
-        //먼저 데이터베이스에서 수정할 영화를 찾음
-        movie.update(request);
-        //조회한 영화 객체의 정보를 새로운 값으로 변경
+//    public MovieResponse update(Long id, MovieRequest request) {
+//        //영화 정보를 수정
+//        Movie movie = findEntity(id);
+//        //먼저 데이터베이스에서 수정할 영화를 찾음
+//        movie.update(request);
+//        //조회한 영화 객체의 정보를 새로운 값으로 변경
+//
+//        return MovieResponse.from(repository.save(movie));
+//        //save()를 다시 호출
+//    }
 
-        return MovieResponse.from(repository.save(movie));
-        //save()를 다시 호출
+    @Transactional
+    public MovieResponse update(Long id, MovieRequest request) {
+        Movie movie = findEntity(id);
+        movie.update(request);
+
+        return MovieResponse.from(movie);
     }
     public List<MovieResponse> findByGenre(String genre) {
         return repository.findByGenre(genre)
