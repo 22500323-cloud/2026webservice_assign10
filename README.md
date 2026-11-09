@@ -1,7 +1,7 @@
 1. 프로젝트 소개 : Spring data JPA를 사용하여 영화 정보를 관리하는 CRUD프로젝트
-GitHub (개인) :
-GitHub : 
-Render : 
+GitHub (개인) : https://github.com/22500323-cloud/2026webservice_assign10.git
+GitHub : https://github.com/2026-2-WebService/assign10-c01-22500323.git
+Render : https://two026webservice-assign10-3c2l.onrender.com/
 2. Query Method 3개: 검색 조건 및 API 실행 결과
 ![img.png](img.png)
 ![img_1.png](img_1.png)
