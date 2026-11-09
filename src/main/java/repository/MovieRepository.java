@@ -3,14 +3,23 @@ package org.example.jpabook.week09_jpa_project.repository;
 import org.example.jpabook.week09_jpa_project.entity.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 
+//Repository는 데이터베이스에 저장된 영화 정보를 관리하는 역할
+//JpaRepository를 상속받으면 저장, 조회, 수정, 삭제 기능을 기본으로 사용
 public interface MovieRepository extends JpaRepository<Movie, Long> {
+
+    List<Movie> findByGenre(String genre);
+    List<Movie> findByGenreAndRatingGreaterThanEqual(String genre, Double rating);
+    List<Movie> findByGenreOrderByRatingDesc(String genre);
+
 }
+
 
 //<Movie, Long>에서 Movie는 관리할 Entity 클래스, Long은 Movie 클래스에서 기본 키로 사용
 
 //JpaRepository가 기본으로 제공하는 주요 메서드
-//save():새로운 데이터를 저장하거나 기존 데이터 수정.
+//save():새로운 데이터를 저장하거나 기존 데이터 수정
 //findById():전달한 ID와 일치하는 데이터 조회
 //findAll():데이터베이스에 저장된 모든 데이터 조회
 //existsById():전달한 ID에 해당하는 데이터가 있는지 확인

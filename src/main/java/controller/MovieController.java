@@ -40,6 +40,21 @@ public class MovieController {
     public MovieResponse findById(@PathVariable Long id) {
         return service.findById(id);
     }
+    @GetMapping("/search/genre")
+    public List<MovieResponse> findByGenre(@RequestParam String genre) {
+        return service.findByGenre(genre);
+    }
+    @GetMapping("/search/condition")
+    public List<MovieResponse> findByGenreAndRating(
+            @RequestParam String genre,
+            @RequestParam Double rating) {
+        return service.findByGenreAndRating(genre, rating);
+    }
+
+    @GetMapping("/search/sort")
+    public List<MovieResponse> findByGenreOrderByRating(@RequestParam String genre) {
+        return service.findByGenreOrderByRating(genre);
+    }
 
     @PutMapping("/{id}")
     public MovieResponse update(

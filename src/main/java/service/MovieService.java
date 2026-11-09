@@ -54,6 +54,7 @@ public class MovieService {
         //조회한 영화 정보를 MovieResponse 형태로 바꾸어 반환
     }
 
+
     public MovieResponse update(Long id, MovieRequest request) {
         //영화 정보를 수정
         Movie movie = findEntity(id);
@@ -64,6 +65,27 @@ public class MovieService {
         return MovieResponse.from(repository.save(movie));
         //save()를 다시 호출
     }
+    public List<MovieResponse> findByGenre(String genre) {
+        return repository.findByGenre(genre)
+                .stream()
+                .map(MovieResponse::from)
+                .toList();
+    }
+
+    public List<MovieResponse> findByGenreAndRating(String genre, Double rating) {
+        return repository.findByGenreAndRatingGreaterThanEqual(genre, rating)
+                .stream()
+                .map(MovieResponse::from)
+                .toList();
+    }
+
+    public List<MovieResponse> findByGenreOrderByRating(String genre) {
+        return repository.findByGenreOrderByRatingDesc(genre)
+                .stream()
+                .map(MovieResponse::from)
+                .toList();
+    }
+
 
     public void delete(Long id) {
         //id를 이용하여 영화 삭제
